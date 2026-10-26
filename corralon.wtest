@@ -1,0 +1,234 @@
+import corralon.*
+
+describe "Requerimiento 1: saber si un pedido puede entregarse" {
+
+  test "un item con stock suficiente puede entregarse" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(martillo, 3)
+
+    assert.that(pedido.puedeEntregarse())
+  }
+
+  test "un item que pide exactamente el stock disponible puede entregarse" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(martillo, 5)
+
+    assert.that(pedido.puedeEntregarse())
+  }
+
+  test "un item que pide mas stock del disponible impide entregar el pedido" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(martillo, 7)
+
+    assert.notThat(pedido.puedeEntregarse())
+  }
+
+  test "las herramientas pueden entregarse hasta 50 km" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 50)
+
+    pedido.agregarItem(martillo, 3)
+
+    assert.that(pedido.puedeEntregarse())
+  }
+
+  test "las herramientas no pueden entregarse a mas de 50 km" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 51)
+
+    pedido.agregarItem(martillo, 3)
+
+    assert.notThat(pedido.puedeEntregarse())
+  }
+
+  test "los materiales pueden entregarse si se piden 2 o mas" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(arena, 2)
+
+    assert.that(pedido.puedeEntregarse())
+  }
+
+  test "los materiales no pueden entregarse si se pide solo 1" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(arena, 1)
+
+    assert.notThat(pedido.puedeEntregarse())
+  }
+
+  test "el pedido de ejemplo a 35 km puede entregarse" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const soldadora = new HerramientaElectronica(stock = 2, precioBase = 1000)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(arena, 2)
+    pedido.agregarItem(martillo, 3)
+    pedido.agregarItem(soldadora, 1)
+
+    assert.that(pedido.puedeEntregarse())
+  }
+
+  test "el pedido de ejemplo a 70 km no puede entregarse por las herramientas" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const soldadora = new HerramientaElectronica(stock = 2, precioBase = 1000)
+    const pedido = new Pedido(distancia = 70)
+
+    pedido.agregarItem(arena, 2)
+    pedido.agregarItem(martillo, 3)
+    pedido.agregarItem(soldadora, 1)
+
+    assert.notThat(pedido.puedeEntregarse())
+  }
+
+  test "si un solo item no puede entregarse, el pedido entero tampoco" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(arena, 2)
+    pedido.agregarItem(martillo, 7)
+
+    assert.notThat(pedido.puedeEntregarse())
+  }
+
+}
+
+describe "Requerimiento 2: entrega de un pedido" {
+
+  test "al entregar un pedido se descuenta el stock de cada producto" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const soldadora = new HerramientaElectronica(stock = 2, precioBase = 1000)
+    const pedido = new Pedido(distancia = 35)
+    pedido.agregarItem(arena, 2)
+    pedido.agregarItem(martillo, 3)
+    pedido.agregarItem(soldadora, 1)
+
+    const corralon = new Corralon()
+    corralon.entregar(pedido)
+
+    assert.equals(8, arena.stock())
+    assert.equals(2, martillo.stock())
+    assert.equals(1, soldadora.stock())
+  }
+
+  test "al entregar un pedido se lo registra entre los pedidos entregados" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+    pedido.agregarItem(martillo, 3)
+
+    const corralon = new Corralon()
+    corralon.entregar(pedido)
+
+    assert.equals(1, corralon.cantidadPedidosEntregados())
+    assert.that(corralon.pedidosEntregados().contains(pedido))
+  }
+
+  test "el corralon conoce todos los pedidos entregados" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const primerPedido = new Pedido(distancia = 35)
+    primerPedido.agregarItem(martillo, 3)
+    const segundoPedido = new Pedido(distancia = 20)
+    segundoPedido.agregarItem(martillo, 2)
+
+    const corralon = new Corralon()
+    corralon.entregar(primerPedido)
+    corralon.entregar(segundoPedido)
+
+    assert.equals(2, corralon.cantidadPedidosEntregados())
+    assert.that(corralon.pedidosEntregados().contains(primerPedido))
+    assert.that(corralon.pedidosEntregados().contains(segundoPedido))
+  }
+
+  test "no se entrega un pedido sin stock suficiente y no se modifica el stock" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+    pedido.agregarItem(martillo, 7)
+
+    const corralon = new Corralon()
+
+    assert.throwsException { => corralon.entregar(pedido) }
+    assert.equals(5, martillo.stock())
+    assert.equals(0, corralon.cantidadPedidosEntregados())
+  }
+
+  test "no se entrega un pedido con herramientas a mas de 50 km y no se modifica el stock" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 70)
+    pedido.agregarItem(martillo, 3)
+
+    const corralon = new Corralon()
+
+    assert.throwsException { => corralon.entregar(pedido) }
+    assert.equals(5, martillo.stock())
+    assert.equals(0, corralon.cantidadPedidosEntregados())
+  }
+
+  test "no se entrega un pedido con un solo material y no se modifica el stock" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const pedido = new Pedido(distancia = 35)
+    pedido.agregarItem(arena, 1)
+
+    const corralon = new Corralon()
+
+    assert.throwsException { => corralon.entregar(pedido) }
+    assert.equals(10, arena.stock())
+    assert.equals(0, corralon.cantidadPedidosEntregados())
+  }
+
+}
+
+describe "Requerimiento 3: precio de un pedido" {
+
+  test "el precio de un item de material incluye el costo por kilometro" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(arena, 2)
+
+    assert.equals(410, pedido.precio())
+  }
+
+  test "el precio de un item de herramienta es precio base por cantidad" {
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(martillo, 3)
+
+    assert.equals(150, pedido.precio())
+  }
+
+  test "el precio de una herramienta electronica incluye la garantia de transporte" {
+    const soldadora = new HerramientaElectronica(stock = 2, precioBase = 1000)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(soldadora, 1)
+
+    assert.equals(1500, pedido.precio())
+  }
+
+  test "el precio del pedido de ejemplo es la suma de los precios de sus items" {
+    const arena = new Material(stock = 10, precioBase = 100, costoPorKm = 3)
+    const martillo = new Herramienta(stock = 5, precioBase = 50)
+    const soldadora = new HerramientaElectronica(stock = 2, precioBase = 1000)
+    const pedido = new Pedido(distancia = 35)
+
+    pedido.agregarItem(arena, 2)
+    pedido.agregarItem(martillo, 3)
+    pedido.agregarItem(soldadora, 1)
+
+    assert.equals(2060, pedido.precio())
+  }
+
+}

@@ -115,3 +115,52 @@
 **Verificación:** no aplica
 
 ---
+
+## Turno 004 — 2026-10-29T00:32:12-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> 1. items
+> 2. No necesitamos constructoes, porque Wollok me los da automáticamente. Los parámetros de construcción son nombrados, no tiene sentido preguntar el orden.
+> 3. Por ahora dejamos producto vacio, ya lo iremos completando.
+> 4. No hace falta preguntar tipos porque Wollok no exige ese tipo de información para declarar atributos, es más interesante preguntar si es var o const.
+> 5. Arranquemos poniendo todo en un único archivo llamado corralon.wlk.
+
+**Respuesta del agente:**
+
+> Repito tus decisiones, con tus nombres:
+>
+> - Archivo único: `corralon.wlk`.
+> - Clase `Pedido` con parámetros nombrados `distancia` e `items`.
+> - Clase `Item` con parámetros nombrados `producto` y `cantidad`.
+> - Clase `Producto` vacía por ahora.
+> - Sin constructores explícitos: los parámetros se declaran en la clase.
+>
+> Falta una sola definición tuya: ¿cada atributo es `var` o `const`?
+>
+> 1. `distancia`
+> 2. `items`
+> 3. `producto`
+> 4. `cantidad`
+>
+> Decime `var` o `const` para cada uno. Con eso repito la lista final y te pido confirmación explícita antes de transcribir.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Concepto: clase `Pedido` con parámetros `distancia` e `items`.
+- Concepto: clase `Item` con parámetros `producto` y `cantidad`.
+- Concepto: clase `Producto`, vacía por ahora.
+- Archivo: `corralon.wlk` (todo en un único archivo).
+- Datos: sin constructores explícitos; parámetros nombrados.
+- `var` / `const`: pendiente de definir para cada atributo.
+- Mensajes, métodos y responsabilidades: pendientes de definir.
+
+**Código escrito:** no
+
+**Verificación:** no aplica
+
+---

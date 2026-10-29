@@ -164,3 +164,44 @@
 **Verificación:** no aplica
 
 ---
+
+## Turno 005 — 2026-10-29T00:32:50-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> todos const.
+
+**Respuesta del agente:**
+
+> Lista final de lo que voy a transcribir en `corralon.wlk`:
+>
+> ```wollok
+> class Pedido(const distancia, const items)
+>
+> class Item(const producto, const cantidad)
+>
+> class Producto {}
+> ```
+>
+> Nota: `const` impide reasignar el atributo, pero la colección `items` igual puede modificarse.
+>
+> ¿Confirmás que escriba exactamente eso, con esos nombres y esas responsabilidades, sin agregar nada más?
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Archivo: `corralon.wlk`.
+- Clase `Pedido` con `const distancia` y `const items`.
+- Clase `Item` con `const producto` y `const cantidad`.
+- Clase `Producto` vacía.
+- Sin constructores explícitos.
+- Mensajes, métodos y responsabilidades: pendientes de definir.
+
+**Código escrito:** no (pendiente de confirmación explícita)
+
+**Verificación:** no aplica
+
+---

@@ -70,3 +70,48 @@
 **Verificación:** no aplica
 
 ---
+
+## Turno 003 — 2026-10-29T00:29:17-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Vamos a crear la clase pedido y la clase producto. El pedido tiene una distancia y una coleccion de items. Item es una clase. Un Item tiene un producto y una cantidad, ambos atributos. Arranquemos con eso.
+
+**Respuesta del agente:**
+
+> Repito lo que definiste, con tus nombres:
+>
+> - Clase `Pedido` con atributos `distancia` y una colección de items.
+> - Clase `Producto`.
+> - Clase `Item` con atributos `producto` y `cantidad`.
+>
+> Para poder transcribir sin decidir nada, me faltan estos datos:
+>
+> 1. ¿Cómo se llama exactamente el atributo de la colección de items en `Pedido`?
+> 2. ¿Cómo se inicializan `Pedido` e `Item`? ¿Constructor con parámetros? ¿Cuáles son sus nombres exactos y en qué orden?
+> 3. ¿Qué datos guarda `Producto` y cómo se inicializa? ¿O por ahora queda sin atributos ni constructor?
+> 4. ¿`distancia` y `cantidad` son numéricos?
+> 5. ¿En qué archivo querés que escriba estas clases?
+>
+> Cuando me respondas eso, repito la lista completa y te pido confirmación antes de escribir.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Concepto: clase `Pedido`.
+- Concepto: clase `Producto`.
+- Concepto: clase `Item`.
+- Datos: `Pedido` tiene `distancia` y una colección de items (nombre exacto pendiente).
+- Datos: `Item` tiene `producto` y `cantidad`.
+- Mensajes, métodos y parámetros: pendientes de definir.
+- Relaciones: `Pedido` contiene items; `Item` referencia un producto y una cantidad.
+- Responsabilidades: pendientes de definir.
+
+**Código escrito:** no
+
+**Verificación:** no aplica
+
+---

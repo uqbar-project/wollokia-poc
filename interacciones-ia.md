@@ -42,3 +42,31 @@
 **Verificación:** no aplica
 
 ---
+
+## Turno 002 — 2026-10-29T00:26:28-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> a3
+
+**Respuesta del agente:**
+
+> Nivel A3 activado: puedo transcribir literalmente lo que me dictes, nada más. A3 no me habilita a diseñar, elegir nombres, completar ni corregir por vos.
+>
+> Para empezar necesito que me dictes exactamente: qué concepto querés definir (objeto o clase y nombre exacto), qué mensajes entiende, qué métodos y parámetros tiene cada uno, qué datos guarda y cómo se inicializa, con qué objetos se relaciona, qué responsabilidad tiene y qué casos de prueba esperás.
+>
+> Dictame el primero y lo transcribo tal cual, sin agregar nada.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Ninguna todavía.
+
+**Código escrito:** no
+
+**Verificación:** no aplica
+
+---

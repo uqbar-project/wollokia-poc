@@ -205,3 +205,66 @@
 **Verificación:** no aplica
 
 ---
+
+## Turno 006 — 2026-10-29T00:34:22-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Correcto
+
+**Respuesta del agente:**
+
+> Transcribí exactamente lo confirmado en `corralon.wlk`, pero no parsea. El error es:
+>
+> ```
+> Failed to parse corralon.wlk:
+> > 1 | class Pedido(const distancia, const items)
+>     |             ^
+> Expected one of the following:
+> 'inherits', '{', whitespace
+> ```
+>
+> La versión instalada es Wollok-TS v4.3.0. En esa versión los atributos se declaran dentro del cuerpo con `const property`, y la construcción es nombrada (`new Pedido(distancia = ..., items = ...)`).
+>
+> ¿Confirmás que reemplace el contenido por esta traducción sintáctica de lo que ya definiste, sin cambiar nombres ni responsabilidades?
+>
+> ```wollok
+> class Pedido {
+>   const property distancia
+>   const property items
+> }
+>
+> class Item {
+>   const property producto
+>   const property cantidad
+> }
+>
+> class Producto {}
+> ```
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Archivo: `corralon.wlk`.
+- Clase `Pedido` con `const distancia` y `const items`.
+- Clase `Item` con `const producto` y `const cantidad`.
+- Clase `Producto` vacía.
+- Sin constructores explícitos; construcción nombrada.
+- Mensajes, métodos y responsabilidades: pendientes de definir.
+
+**Código escrito:** sí
+
+```wollok
+class Pedido(const distancia, const items)
+
+class Item(const producto, const cantidad)
+
+class Producto {}
+```
+
+**Verificación:** `wollok test` → falla el parseo de `corralon.wlk` (se esperaba `{`, `inherits` o whitespace). Sin corrección aplicada, pendiente de confirmación.
+
+---

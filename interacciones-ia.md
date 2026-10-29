@@ -268,3 +268,62 @@ class Producto {}
 **Verificación:** `wollok test` → falla el parseo de `corralon.wlk` (se esperaba `{`, `inherits` o whitespace). Sin corrección aplicada, pendiente de confirmación.
 
 ---
+
+## Turno 007 — 2026-10-29T00:34:50-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Correcto
+
+**Respuesta del agente:**
+
+> Listo. `corralon.wlk` quedó con las tres clases y nombres que confirmaste:
+>
+> ```wollok
+> class Pedido {
+>   const property distancia
+>   const property items
+> }
+>
+> class Item {
+>   const property producto
+>   const property cantidad
+> }
+>
+> class Producto {}
+> ```
+>
+> `wollok test` compila sin errores ni warnings y pasa el test existente (1/1). No agregué nada más.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Archivo: `corralon.wlk`.
+- Clase `Pedido` con `const property distancia` y `const property items`.
+- Clase `Item` con `const property producto` y `const property cantidad`.
+- Clase `Producto` vacía.
+- Sin constructores explícitos; construcción nombrada.
+- Mensajes, métodos y responsabilidades: pendientes de definir.
+
+**Código escrito:** sí
+
+```wollok
+class Pedido {
+  const property distancia
+  const property items
+}
+
+class Item {
+  const property producto
+  const property cantidad
+}
+
+class Producto {}
+```
+
+**Verificación:** `wollok test` → 1 test ejecutado, 1 pasado, sin errores ni warnings.
+
+---

@@ -249,7 +249,7 @@ Si alguna respuesta es "no", el agente debe detenerse y seguir preguntando.
 **Al cerrar:**
 
 1. Verificar que todos los turnos de la sesión estén registrados.
-2. No hacer commits, pushes ni cambios de configuración sin pedido explícito.
+2. No hacer pushes ni cambios de configuración sin pedido explícito.
 3. Dejar claro qué decisiones tomó el estudiante y qué quedó pendiente de definir.
 
 ---

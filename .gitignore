@@ -2,6 +2,9 @@
 # Local history
 .history
 
+# Obsidian local configuration
+.obsidian/
+
 # Wollok Log
 log
 *.log

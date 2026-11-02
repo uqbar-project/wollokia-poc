@@ -28,7 +28,13 @@ Fuente: [Objetos](https://www.wollok.org/documentation/objects/).
 
 ## Clases e inicialización
 
-Definir clases con `class Nombre { ... }`; crear instancias con `new Nombre(atributo = valor)`. Los argumentos nombrados inicializan los atributos correspondientes: no trasladar automáticamente constructores de Java o JavaScript.
+Definir clases con `class Nombre { ... }`; crear instancias con `new Nombre(atributo = valor)`. Los argumentos nombrados inicializan los atributos correspondientes.
+
+Los atributos **no llevan tipo explícito** en el código Wollok. No preguntar por el tipo de un atributo ni exigirlo antes de escribir.
+
+Wollok **no tiene constructores**. No preguntar por constructores ni por firmas de constructor: esa pregunta no corresponde al lenguaje.
+
+Sí es pertinente preguntar cómo se inicializa cada atributo y si se declara con `var` o `const` (o como `property`), porque son decisiones de diseño. No trasladar automáticamente constructores de Java o JavaScript ni elegir esos valores por el estudiante.
 
 La herencia usa `class Subclase inherits Superclase { ... }`; la redefinición de métodos usa `override method`. No elegir herencia, atributos ni valores iniciales por el estudiante.
 

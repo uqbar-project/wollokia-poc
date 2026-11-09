@@ -720,3 +720,44 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 017 — 2026-11-09T19:33:53-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Que el getter se llame `distancia` también
+
+**Respuesta del agente:**
+
+> Agregué `method distancia()` en `Pedido` (devuelve `distancia`) e implementé `override method tieneStock(cantidad, pedido)` en `Herramienta` con `super(cantidad, pedido) && pedido.distancia() <= 50`, según tus decisiones.
+>
+> Ejecuté `wollok test`: **1 pasado** (`"Pedido puede entregarse"`), 0 errores, 0 warnings.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: `Pedido.distancia()` getter; `Herramienta.tieneStock(cantidad, pedido)` redefinido.
+- Métodos y parámetros: getter `distancia()` en `Pedido`; override en `Herramienta` combina stock (`super`) y `pedido.distancia() <= 50`.
+- Datos y relaciones: acceso a distancia de `Pedido` vía `distancia()`.
+- Responsabilidades: `Herramienta` solo puede entregarse si hay stock suficiente y la distancia del pedido es <= 50 km.
+
+**Código escrito:** sí
+
+```wollok
+method distancia() {
+  return distancia
+}
+
+// en Herramienta
+override method tieneStock(cantidad, pedido) {
+  return super(cantidad, pedido) && pedido.distancia() <= 50
+}
+```
+
+**Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 1 pasado, 0 errores, 0 warnings.
+
+---

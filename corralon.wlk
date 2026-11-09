@@ -2,6 +2,10 @@ class Pedido {
   const distancia
   const items
 
+  method distancia() {
+    return distancia
+  }
+
   method puedeEntregarse() {
     return items.all({ item => item.alcanza(self) })
   }
@@ -25,6 +29,9 @@ class Producto {
 }
 
 class Herramienta inherits Producto {
+  override method tieneStock(cantidad, pedido) {
+    return super(cantidad, pedido) && pedido.distancia() <= 50
+  }
 }
 
 class Material inherits Producto {

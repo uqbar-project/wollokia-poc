@@ -911,3 +911,44 @@ test "Pedido con más restricciones puede entregarse" {
 **Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 2 pasados, 0 errores, 0 warnings.
 
 ---
+
+## Turno 022 — 2026-11-09T19:41:38-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wtest, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Avancemos con casos que no puedan entregarse. Definime 2 tests más:
+> 
+> - "Material con poca cantidad no puede entregarse": que haga un pedido con solo 1 de arena. No puede entregarse porque es menor a dos
+> 
+> - "Herramienta lejana no puede entregarse": un pedido solo con el martillo pero con distancia 100. No puede entregarse por la distancia del pedido
+
+**Respuesta del agente:**
+
+> Tengo los nombres, escenarios y resultados esperados (en ambos casos `puedeEntregarse` debe ser falso). Para escribirlos sin elegir datos por vos, necesito que definas lo que falta en cada test:
+>
+> 1. **"Material con poca cantidad no puede entregarse"**: ¿`arena` se instancia como `Material` u otra clase? ¿Con qué `stock`? ¿Qué `distancia` tiene el pedido? (La cantidad del item es 1, según dijiste.)
+> 2. **"Herramienta lejana no puede entregarse"**: ¿`martillo` se instancia como `Herramienta` u otra clase? ¿Con qué `stock` y qué `cantidad` en el item?
+>
+> Cuando me des esos datos, agrego ambos tests en `corralon.wtest`.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: nuevos tests.
+- Mensajes: verifican `puedeEntregarse()` como falso.
+- Métodos y parámetros: no aplica.
+- Datos y relaciones: test 1: pedido con solo 1 de arena, no entregable (cantidad < 2 para Material, según intención); datos completos pendientes. Test 2: pedido a distancia 100 con solo martillo, no entregable por distancia; datos completos pendientes.
+- Responsabilidades: no aplica.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

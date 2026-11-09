@@ -80,3 +80,41 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 003 — 2026-11-09T18:56:04-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Quiero una clase pedido a la cual preguntarle si puede entregarse.
+> 
+> Para eso que verifique si todos sus items (otra clase) si alcanza el stock.
+> 
+> Para saber si a un item le alcanza el stock le pregunta a su producto (otra clase) si hay stock suficiente para la cantidad que dice el item. Cada producto conoce su stock
+
+**Respuesta del agente:**
+
+> Registré tu idea general (pedido consulta si puede entregarse; verifica sus items; cada item consulta a su producto si hay stock suficiente para su cantidad; el producto conoce su stock). Para escribir código en A3 necesito las decisiones/nombres exactos que vos definas para el incremento que querés hacer ahora — no puedo elegir nombres, mensajes, parámetros ni atributos.
+>
+> ¿Qué incremento querés que escriba primero? Decime, con nombres exactos, lo que haga falta para ese cambio (por ejemplo: nombre exacto de la clase del pedido, nombre exacto del método para preguntar si puede entregarse, y si ya querés definir también: nombre de la clase de item, nombre de la clase de producto, nombres de mensajes/parámetros/atributos involucrados). Con los nombres exactos de clases que me indiques explícitamente, puedo crearlas vacías de inmediato.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: intención de usar clases para pedido, item y producto (nombres exactos pendientes de confirmación/definición).
+- Mensajes: intención de consultar si un pedido puede entregarse; verificar stock en items; consultar stock suficiente a producto (nombres/parámetros exactos pendientes).
+- Métodos y parámetros: _(pendiente, nombres exactos)_
+- Datos y relaciones: intención de que pedido tenga items; item tenga producto y cantidad; producto conozca stock (nombres/forma exactos pendientes).
+- Responsabilidades: pedido determina si puede entregarse verificando sus items; item verifica stock consultando a su producto con su cantidad; producto informa si hay stock suficiente.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

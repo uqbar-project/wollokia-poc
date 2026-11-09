@@ -31,3 +31,27 @@ test "Pedido con más restricciones puede entregarse" {
 
   assert.that(pedido.puedeEntregarse())
 }
+
+test "Material con poca cantidad no puede entregarse" {
+  const arena = new Material(stock = 10)
+
+  const items = [
+    new Item(cantidad = 1, producto = arena)
+  ]
+
+  const pedido = new Pedido(distancia = 35, items = items)
+
+  assert.notThat(pedido.puedeEntregarse())
+}
+
+test "Herramienta lejana no puede entregarse" {
+  const martillo = new Herramienta(stock = 10)
+
+  const items = [
+    new Item(cantidad = 3, producto = martillo)
+  ]
+
+  const pedido = new Pedido(distancia = 100, items = items)
+
+  assert.notThat(pedido.puedeEntregarse())
+}

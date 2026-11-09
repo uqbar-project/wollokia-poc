@@ -952,3 +952,61 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 023 — 2026-11-09T19:42:53-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wtest, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> arena se instancia de Material y martillo de Herramienta, sí.
+> 
+> Para los datos que no te dije, usá los del test anterior
+
+**Respuesta del agente:**
+
+> Agregué en `corralon.wtest` los tests `"Material con poca cantidad no puede entregarse"` (arena `Material` stock 10, cantidad 1, distancia 35; `assert.notThat(pedido.puedeEntregarse())`) y `"Herramienta lejana no puede entregarse"` (martillo `Herramienta` stock 10, cantidad 3, distancia 100; `assert.notThat(pedido.puedeEntregarse())`), usando los datos del test anterior donde no especificaste.
+>
+> Ejecuté `wollok test`: **4 pasados**, 0 errores, 0 warnings.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: dos tests nuevos.
+- Mensajes: verifican `puedeEntregarse()` falso.
+- Métodos y parámetros: no aplica.
+- Datos y relaciones: test 1: `Material` arena stock 10, item cantidad 1, pedido distancia 35. Test 2: `Herramienta` martillo stock 10, item cantidad 3, pedido distancia 100. Valores no especificados tomados del test anterior por instrucción del estudiante.
+- Responsabilidades: no aplica.
+
+**Código escrito:** sí
+
+```wollok
+test "Material con poca cantidad no puede entregarse" {
+  const arena = new Material(stock = 10)
+
+  const items = [
+    new Item(cantidad = 1, producto = arena)
+  ]
+
+  const pedido = new Pedido(distancia = 35, items = items)
+
+  assert.notThat(pedido.puedeEntregarse())
+}
+
+test "Herramienta lejana no puede entregarse" {
+  const martillo = new Herramienta(stock = 10)
+
+  const items = [
+    new Item(cantidad = 3, producto = martillo)
+  ]
+
+  const pedido = new Pedido(distancia = 100, items = items)
+
+  assert.notThat(pedido.puedeEntregarse())
+}
+```
+
+**Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 4 pasados, 0 errores, 0 warnings.
+
+---

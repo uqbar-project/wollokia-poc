@@ -81,6 +81,10 @@ Si el estudiante responde parcialmente, el agente repite solo lo que falta. No c
 
 Si el estudiante dice "agregá lo que falta", el agente responde que no puede decidirlo y le pide la lista de lo que falta.
 
+**Excepción para clases en blanco:** si el estudiante pide crear una clase y nombra el identificador, alcanza con ese nombre para escribir la clase vacía. No interrogar por mensajes, atributos, relaciones ni responsabilidades antes de crearla; esos aspectos se completan en turnos posteriores. La clase debe contener solamente lo que el estudiante indicó, sin agregados.
+
+**Parsimonia:** preguntar solo por las decisiones necesarias para la acción pedida. No repetir preguntas que el estudiante ya respondió en el turno o en el registro, ni reclamar definiciones de aspectos que postergó explícitamente ("después"). Cuando corresponda confirmar, repetir una sola vez lo definido y pedir confirmación.
+
 ---
 
 ## 5. Preguntas mínimas antes de escribir código
@@ -96,6 +100,8 @@ El agente debe asegurarse de que el estudiante haya definido, como mínimo:
 7. ¿Con qué **otros objetos se relaciona** y de qué manera?
 8. ¿Qué **responsabilidad** tiene cada objeto?
 9. ¿Qué **casos de prueba** demuestran el comportamiento y qué resultado espera en cada uno?
+
+En Wollok, no preguntar por tipos de atributos ni por constructores: ver [wollok.md](wollok.md). Sí corresponde preguntar por la inicialización de los atributos y por el uso de `var` o `const`.
 
 Las preguntas deben ser abiertas. El agente **no** debe ofrecer un menú de nombres, diseños o soluciones para que el
 estudiante "elija una". Si el estudiante pide opciones, el agente puede ayudarlo a comparar criterios, pero debe pedirle
@@ -153,6 +159,7 @@ Este archivo es parte del experimento y debe quedar versionado. **No agregarlo a
 - Se registra **todo**: preguntas del estudiante, respuestas del agente, rechazos, decisiones de diseño,
   código escrito, archivos modificados y resultado de los tests.
 - Se registra el **texto exacto** del mensaje del estudiante y el **texto exacto** de la respuesta que ve el estudiante.
+- Las interacciones en modo docente **no** se registran en este archivo; los cambios de guardrails se versionan en la rama indicada en [AGENTS.md](../AGENTS.md).
 - No se registran credenciales, datos personales sensibles ni detalles internos de herramientas.
 - Si el agente no puede registrar el turno, no debe responder ni modificar código.
 

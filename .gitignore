@@ -13,3 +13,4 @@ log
 node_modules
 .atl/.skill-registry.cache.json
 .atl/skill-registry.md
+.DS_Store

@@ -455,3 +455,60 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 011 — 2026-11-09T19:19:25-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wtest, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Escribilo en un archivo corralon.wtest
+> 
+> El test se llama "Pedido puede entregarse"
+> 
+> Definí los productos arena, martillo, soldadora en variables llamadas así.
+> Luego la lista de items usando esos productos. Y finalmente el Pedido con la lista de items
+> 
+> Cada objeto debe ser instanciado pasandole la info requerida para cada atributo, como ya te dije
+
+**Respuesta del agente:**
+
+> Creé `corralon.wtest` con el test `"Pedido puede entregarse"` usando las variables `arena`, `martillo`, `soldadora` (productos con `stock = 10`), una lista `items` con los tres ítems (cantidades 2, 3 y 1 con esos productos) y un `pedido` (`distancia = 35`, `items = items`). El test verifica `assert.that(pedido.puedeEntregarse())`.
+>
+> Ejecuté `wollok test` en el proyecto: **1 test pasado** (`corralon / "Pedido puede entregarse"`). Hubo 1 advertencia preexistente/no bloqueante: variable `distancia` sin uso en `corralon.wlk:2`.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios al modelo.
+- Mensajes: test verifica `puedeEntregarse()`.
+- Métodos y parámetros: no aplica.
+- Datos y relaciones: datos del test definidos por el estudiante (distancia 35; arena/martillo/soldadora stock 10; items con cantidades 2,3,1; resultado esperado verdadero). Nombres de archivo/test/variables según lo indicado.
+- Responsabilidades: no aplica.
+
+**Código escrito:** sí
+
+```wollok
+import corralon.*
+
+test "Pedido puede entregarse" {
+  const arena = new Producto(stock = 10)
+  const martillo = new Producto(stock = 10)
+  const soldadora = new Producto(stock = 10)
+
+  const items = [
+    new Item(cantidad = 2, producto = arena),
+    new Item(cantidad = 3, producto = martillo),
+    new Item(cantidad = 1, producto = soldadora)
+  ]
+
+  const pedido = new Pedido(distancia = 35, items = items)
+
+  assert.that(pedido.puedeEntregarse())
+}
+```
+
+**Verificación:** `wollok test` (en `/Users/palumbon/pdep/wollokia-poc`): 1 test corrido, 1 pasado (`corralon / "Pedido puede entregarse"`). 0 errores, 1 warning (`Unused variable at corralon.wlk:2` para `distancia`).
+
+---

@@ -1,0 +1,17 @@
+import corralon.*
+
+test "Pedido puede entregarse" {
+  const arena = new Producto(stock = 10)
+  const martillo = new Producto(stock = 10)
+  const soldadora = new Producto(stock = 10)
+
+  const items = [
+    new Item(cantidad = 2, producto = arena),
+    new Item(cantidad = 3, producto = martillo),
+    new Item(cantidad = 1, producto = soldadora)
+  ]
+
+  const pedido = new Pedido(distancia = 35, items = items)
+
+  assert.that(pedido.puedeEntregarse())
+}

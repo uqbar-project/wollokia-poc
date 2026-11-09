@@ -23,3 +23,9 @@ class Producto {
     return stock >= cantidad
   }
 }
+
+class Herramienta inherits Producto {
+}
+
+class Material inherits Producto {
+}

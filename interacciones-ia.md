@@ -512,3 +512,43 @@ test "Pedido puede entregarse" {
 **Verificación:** `wollok test` (en `/Users/palumbon/pdep/wollokia-poc`): 1 test corrido, 1 pasado (`corralon / "Pedido puede entregarse"`). 0 errores, 1 warning (`Unused variable at corralon.wlk:2` para `distancia`).
 
 ---
+
+## Turno 012 — 2026-11-09T19:25:59-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Ok, implementemos las condiciones faltantes para terminar el punto 1.
+> 
+> Creá las clases Herramienta y Material como subclases de Producto, para agregar las condiciones particulares
+
+**Respuesta del agente:**
+
+> Agregué en `corralon.wlk` las clases `Herramienta` y `Material` como subclases de `Producto` (vacías por ahora, sin condiciones particulares definidas).
+>
+> Para implementar las condiciones particulares del punto 1, necesito que definas el próximo incremento: ¿qué método/mensaje querés agregar o redefinir en `Herramienta` y/o `Material`, con qué nombre exacto, qué parámetros (si necesita alguno, por ejemplo información del pedido o del item/distancia/cantidad) y qué condición debe devolver o aplicar? Definí también cómo querés integrarlo con `Item.alcanza()`/`Pedido.puedeEntregarse()`.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: clase `Herramienta inherits Producto`; clase `Material inherits Producto`.
+- Mensajes: condiciones particulares pendientes de definición.
+- Métodos y parámetros: pendientes.
+- Datos y relaciones: herencia de `Producto` (incluye `stock`).
+- Responsabilidades: Herramienta/Material tendrán condiciones particulares (pendiente definir).
+
+**Código escrito:** sí
+
+```wollok
+class Herramienta inherits Producto {
+}
+
+class Material inherits Producto {
+}
+```
+
+**Verificación:** no aplica (no ejecuté tests en este turno).
+
+---

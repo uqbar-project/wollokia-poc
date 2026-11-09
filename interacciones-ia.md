@@ -221,3 +221,39 @@ class Producto {
 **Verificación:** no aplica (no ejecuté tests; el proyecto no tiene tests activos definidos por el estudiante).
 
 ---
+
+## Turno 006 — 2026-11-09T19:07:23-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> El pedido tiene dos atributos: distancia (un número) e items (una lista de items).
+> 
+> Los items tienen 2 atributos: cantidad (un número) y producto (un producto)
+> 
+> El producto tiene su cantidad de stock como atributo
+
+**Respuesta del agente:**
+
+> Registré esos atributos por descripción. Para escribirlos en `corralon.wlk`, necesito los nombres exactos (identificadores) que querés usar para cada uno. ¿Cómo querés llamarlos exactamente: el atributo de distancia en `Pedido`, el de items en `Pedido`, el de cantidad en `Item`, el de producto en `Item`, y el de stock en `Producto`? Si querés, en el mismo mensaje decime también si alguno puede cambiar o no (para declararlo como variable o constante); si no lo definís ahora, lo dejamos pendiente para el incremento donde haga falta.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios (Pedido, Item, Producto).
+- Mensajes: sin cambios.
+- Métodos y parámetros: sin cambios.
+- Datos y relaciones: Pedido tendrá distancia (número) e items (lista de items); Item tendrá cantidad (número) y producto (Producto); Producto tendrá stock. Nombres exactos e inicialización/mutabilidad pendientes.
+- Responsabilidades: sin cambios.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

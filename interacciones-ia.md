@@ -831,3 +831,35 @@ class Material inherits Producto {
 **Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 1 pasado, 0 errores, 0 warnings.
 
 ---
+
+## Turno 020 — 2026-11-09T19:38:15-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wtest, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Sí, crea otro test, similar al anterior, en donde arena sea instanciada de Material y martillo y soldadora sean Herramientas
+
+**Respuesta del agente:**
+
+> Puedo crearlo en `corralon.wtest`, pero necesito que definas: **¿cómo se llama exactamente el nuevo test?** Y confirmame si mantiene los mismos datos y resultado esperado que el anterior (distancia 35 km; 2 arena, 3 martillos, 1 soldadora; stock 10 en cada producto; se espera que `puedeEntregarse` sea verdadero), cambiando únicamente que `arena` se instancia como `Material` y `martillo`/`soldadora` como `Herramienta`.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: test usará `Material` para arena y `Herramienta` para martillo y soldadora (tipos de instancia definidos).
+- Mensajes: verificará `puedeEntregarse()`.
+- Métodos y parámetros: no aplica.
+- Datos y relaciones: datos/resultado esperado a confirmar (probablemente iguales al test anterior).
+- Responsabilidades: no aplica.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

@@ -413,3 +413,45 @@ class Producto {
 **Verificación:** no aplica (no ejecuté tests).
 
 ---
+
+## Turno 010 — 2026-11-09T19:16:30-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Antes de implementar las otras condiciones quiero hacer un test validando que
+> 
+> este pedido:
+> Entregar a 35 km:
+>     - 2 metros cúbicos de arena
+>     - 3 martillos
+>     - 1 soldadora 
+> 
+> puedeEntregarse si todo los productos tiene 10 de stock
+
+**Respuesta del agente:**
+
+> El escenario, los datos y el resultado esperado están claros (pedido a 35 km con 3 items: 2 arena, 3 martillos, 1 soldadora; todos los productos con stock 10; se espera que `puedeEntregarse` sea verdadero). En A3 puedo ayudarte a redactar el test, pero necesito que vos definas los nombres/identificadores.
+>
+> ¿Cómo querés nombrar exactamente: el archivo `.wtest`, la descripción del test (y/o `describe` si querés usar uno), y las referencias/variables para los productos (arena, martillo, soldadora), los items y el pedido? Cuando me los indiques, lo escribo con esos nombres usando `new Pedido(...)`, `new Item(...)`, `new Producto(...)` y `assert` según lo que vos definas.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios al modelo; se solicita un test.
+- Mensajes: se verificará `Pedido.puedeEntregarse()`.
+- Métodos y parámetros: no aplica.
+- Datos y relaciones: escenario del test definido (distancia 35; items: 2 de arena, 3 de martillos, 1 de soldadora; stock 10 en cada producto; resultado esperado: puede entregarse = verdadero). Nombres del test/variables/archivo pendientes.
+- Responsabilidades: no aplica.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

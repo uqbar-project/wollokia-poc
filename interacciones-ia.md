@@ -652,3 +652,37 @@ class Material inherits Producto {
 **Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 1 pasado, 0 errores, 1 warning (`Unused variable at corralon.wlk:2`).
 
 ---
+
+## Turno 015 — 2026-11-09T19:32:00-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> El método tieneStock(cantidad, pedido) en Herramienta debe validar que `pedido.distancia < 50`
+
+**Respuesta del agente:**
+
+> Para escribir esa validación necesito dos definiciones tuyas: (1) hoy `distancia` en `Pedido` es `const` sin acceso externo; ¿querés declararla como `property`, agregar un método getter con un nombre exacto, o usar otra forma que vos elijas para poder consultarla desde `pedido`? (2) El enunciado dice “hasta 50 km”; vos escribiste `< 50`. ¿Querés que la condición sea `distancia < 50` o `distancia <= 50`?
+>
+> Cuando me lo definas, implemento `override method tieneStock(cantidad, pedido)` en `Herramienta` combinando la condición de stock y la de distancia como indiques.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: `Herramienta` valida condición de distancia del pedido además de stock (detalle de acceso/comparador pendiente).
+- Mensajes: intención de usar `pedido.distancia` (forma de acceso pendiente); `tieneStock(cantidad, pedido)` en `Herramienta`.
+- Métodos y parámetros: `override tieneStock(cantidad, pedido)` pendiente de escribir.
+- Datos y relaciones: acceso a `distancia` de `Pedido` desde fuera pendiente de decisión.
+- Responsabilidades: `Herramienta` restringe entrega por distancia (límite exacto pendiente de confirmación: `< 50` vs `<= 50`).
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

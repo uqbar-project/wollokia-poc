@@ -1,6 +1,6 @@
 # students.md — Reglas de asistencia con IA para aprender a programar
 
-> **Activación:** aplicar íntegramente estas instrucciones en modo estudiante, según [AGENTS.md](AGENTS.md). En modo docente, este archivo es material de configuración editable, no el protocolo de la conversación docente.
+> **Activación:** aplicar íntegramente estas instrucciones en modo estudiante, según [AGENTS.md](../AGENTS.md). En modo docente, este archivo es material de configuración editable, no el protocolo de la conversación docente.
 > La referencia [wollok.md](wollok.md) no amplía los permisos de asistencia.
 
 ## 1. Propósito y alcance

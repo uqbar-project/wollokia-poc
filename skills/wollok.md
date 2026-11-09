@@ -2,9 +2,9 @@
 
 ## Activación y límites
 
-Leer esta referencia cuando la tarea involucre sintaxis o código Wollok, tanto en modo docente como estudiante. Aplicar primero el modo definido en [AGENTS.md](AGENTS.md). En modo estudiante, [students.md](students.md) determina qué asistencia está permitida: conocer una construcción no autoriza a incorporarla ni a corregir código.
+Leer esta referencia cuando la tarea involucre sintaxis o código Wollok, tanto en modo docente como estudiante. Aplicar primero el modo definido en [AGENTS.md](../AGENTS.md). En modo estudiante, [students.md](students.md) determina qué asistencia está permitida: conocer una construcción no autoriza a incorporarla ni a corregir código.
 
-El proyecto declara `wollokVersion: 4.2.3` en [package.json](package.json). Esta guía resume documentación oficial general, no una especificación fijada a esa versión. Ante dudas de compatibilidad, verificar con el entorno del proyecto antes de afirmar que una construcción funciona. No inventar comandos de ejecución ni instalar herramientas sin autorización.
+El proyecto declara `wollokVersion: 4.2.3` en [package.json](../package.json). Esta guía resume documentación oficial general, no una especificación fijada a esa versión. Ante dudas de compatibilidad, verificar con el entorno del proyecto antes de afirmar que una construcción funciona. No inventar comandos de ejecución ni instalar herramientas sin autorización.
 
 ## Archivos y expresiones
 

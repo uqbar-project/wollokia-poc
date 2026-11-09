@@ -1,9 +1,20 @@
-object pepita {
-  var energy = 100
+class Pedido {
+  const distancia
+  const items
 
-  method energy() = energy
+  method puedeEntregarse() = items.all({ item => item.alcanza() })
+}
 
-  method fly(minutes) {
-    energy = energy - minutes * 3
-  }
+class Item {
+  const cantidad
+  const producto
+
+  method alcanza() = producto.tieneStock(cantidad)
+}
+
+class Producto {
+  const descripcion
+  var property stock
+
+  method tieneStock(cantidad) = cantidad <= stock
 }

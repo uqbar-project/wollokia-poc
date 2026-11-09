@@ -761,3 +761,35 @@ override method tieneStock(cantidad, pedido) {
 **Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 1 pasado, 0 errores, 0 warnings.
 
 ---
+
+## Turno 018 — 2026-11-09T19:35:05-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Al igual que con Herramienta, hay que redefinir el método tieneStock(cantidad, pedido) en Material para corroborar que la cantidad solicitada del item sea 2
+
+**Respuesta del agente:**
+
+> Para implementarlo tal como vos lo definas, necesito confirmar la condición exacta: dijiste “sea 2”, pero el enunciado del ejercicio menciona “2 o más”. ¿Querés que `Material.tieneStock(cantidad, pedido)` valide `cantidad == 2` o `cantidad >= 2` (además de la condición de stock, como hiciste con `Herramienta`)? Cuando me lo confirmes, lo escribo en `corralon.wlk`.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: `Material` redefinirá `tieneStock(cantidad, pedido)` (condición de cantidad pendiente de confirmación exacta).
+- Mensajes: `override tieneStock(cantidad, pedido)` en `Material`.
+- Métodos y parámetros: misma firma que en `Producto`/`Herramienta`.
+- Datos y relaciones: usa `cantidad` (y stock vía `super` si así lo definís).
+- Responsabilidades: `Material` condiciona entrega por cantidad solicitada (comparador pendiente).
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

@@ -2,7 +2,7 @@
 
 ## Activación y límites
 
-Leer esta referencia cuando la tarea involucre sintaxis o código Wollok, tanto en modo docente como estudiante. Aplicar primero el modo definido en [AGENTS.md](../AGENTS.md). En modo estudiante, [students.md](students.md) determina qué asistencia está permitida: conocer una construcción no autoriza a incorporarla ni a corregir código.
+Leer esta referencia cuando la tarea involucre sintaxis o código Wollok, tanto en modo docente como estudiante. Aplicar primero el rol definido en [AGENTS.md](../AGENTS.md). En el rol estudiante, [asistencia-estudiante.md](asistencia-estudiante.md) determina qué asistencia está permitida: conocer una construcción no autoriza a incorporarla ni a corregir código.
 
 El proyecto declara `wollokVersion: 4.2.3` en [package.json](../package.json). Esta guía resume documentación oficial general, no una especificación fijada a esa versión. Ante dudas de compatibilidad, verificar con el entorno del proyecto antes de afirmar que una construcción funciona. No inventar comandos de ejecución ni instalar herramientas sin autorización.
 
@@ -58,7 +58,7 @@ test "suma de literales" {
 }
 ```
 
-No copiarlo al proyecto como test del estudiante ni mostrar ejemplos por encima del nivel de ayuda autorizado. Antes de transcribir un test del ejercicio, exigir escenario, datos, resultado esperado y confirmación según `students.md`.
+No copiarlo al proyecto como test del estudiante ni mostrar ejemplos por encima del nivel de ayuda autorizado. Antes de transcribir un test del ejercicio, exigir escenario, datos, resultado esperado y confirmación según `asistencia-estudiante.md`.
 
 Fuente: [Tests](https://www.wollok.org/documentation/tests/).
 

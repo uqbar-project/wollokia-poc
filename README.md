@@ -47,7 +47,7 @@ opencode --version
 En VS Code, abrir **Terminal → Nueva terminal**, comprobar que la ubicación es la raíz del proyecto e iniciar:
 
 ```sh
-opencode
+opencode --agent estudiante
 ```
 
 Dentro de OpenCode:
@@ -67,7 +67,7 @@ Escribir el pedido como un mensaje normal en la conversación, **sin `/`**:
 Modo docente
 ```
 
-Habilita el mantenimiento de la documentación y de las instrucciones locales, incluidos `AGENTS.md`, `skills/students.md` y `skills/wollok.md`. No aplica a esa conversación el protocolo de asistencia al estudiante. No autoriza automáticamente instalaciones, commits ni pushes.
+Habilita el mantenimiento de la documentación y de las instrucciones locales, incluidos `AGENTS.md`, `.opencode/agents/estudiante.md`, `skills/students.md` y `skills/wollok.md`. No aplica a esa conversación el protocolo de asistencia al estudiante. No autoriza automáticamente instalaciones, commits ni pushes.
 
 Para iniciar o retomar una sesión de aprendizaje:
 
@@ -75,7 +75,7 @@ Para iniciar o retomar una sesión de aprendizaje:
 Modo estudiante
 ```
 
-Es el **modo predeterminado de cada sesión**. Todas las interacciones quedan sujetas a [skills/students.md](skills/students.md): el estudiante define nombres y diseño, y el agente no resuelve el ejercicio. El nivel de ayuda inicial es A0; por ejemplo, puede pedirse `Quiero trabajar con nivel A1` para habilitar explicaciones conceptuales con ejemplos ajenos al ejercicio.
+Es el **modo predeterminado en OpenCode**; en Codex, el valor predeterminado es modo docente. Todas las interacciones quedan sujetas a [skills/students.md](skills/students.md): el estudiante define nombres y diseño, y el agente no resuelve el ejercicio. El nivel de ayuda inicial es A0; por ejemplo, puede pedirse `Quiero trabajar con nivel A1` para habilitar explicaciones conceptuales con ejemplos ajenos al ejercicio.
 
 El agente debe anunciar cada cambio y releer las instrucciones correspondientes. El modo se mantiene hasta otro pedido explícito durante esa sesión. No debe inferirse por la tarea, el archivo abierto ni una afirmación de rol. Estos modos son independientes de los modos **Plan/Build** de OpenCode.
 
@@ -84,10 +84,11 @@ El agente debe anunciar cada cambio y releer las instrucciones correspondientes.
 | Archivo | Función |
 |---|---|
 | [AGENTS.md](AGENTS.md) | Selecciona el modo y establece qué instrucciones cargar. |
+| [.opencode/agents/estudiante.md](.opencode/agents/estudiante.md) | Define el agente principal de OpenCode y carga las reglas del modo estudiante. |
 | [skills/students.md](skills/students.md) | Define niveles A0–A3, puerta de diseño, registro y commits en modo estudiante. |
 | [skills/wollok.md](skills/wollok.md) | Referencia de sintaxis cuando la tarea involucra Wollok, en ambos modos. No amplía permisos. |
 
-Son instrucciones locales, **no skills nativos descubiertos automáticamente** por sus nombres.
+OpenCode descubre el agente `estudiante` por su archivo en `.opencode/agents/`. Los archivos de `skills/` son instrucciones locales, **no skills nativos descubiertos automáticamente** por sus nombres; el agente debe leerlos explícitamente.
 
 En modo estudiante se registra cada turno en [interacciones-ia.md](interacciones-ia.md), sin borrar entradas anteriores. `skills/students.md` también exige un commit después de cada prompt; por eso es necesaria la identidad de Git. El archivo exige además autorización explícita para hacer commits: si no está concedida, debe resolverse antes de ejecutar esa acción. No se deben hacer pushes sin pedido explícito.
 

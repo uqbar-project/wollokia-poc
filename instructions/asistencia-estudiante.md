@@ -67,12 +67,12 @@ El agente **nunca** puede:
 Dentro del nivel de ayuda habilitado, seguir este protocolo:
 
 1. **Identificar el incremento.** Tomar el pedido y las decisiones ya disponibles en el turno, el código y el registro.
-2. **Escribir lo definido.** En A3, implementar en ese turno la parte que ya se pueda escribir sin tomar decisiones por el estudiante, aunque la entidad o el método queden incompletos. No exigir una definición global ni una confirmación adicional de lo que ya pidió.
+2. **Escribir lo definido.** Aplicar el permiso común de clases vacías de la sección 6 en cualquier nivel. En A3, implementar además en ese turno la parte que ya se pueda escribir sin tomar decisiones por el estudiante, aunque la entidad o el método queden incompletos. No exigir una definición global ni una confirmación adicional de lo que ya pidió.
 3. **Dejar pendiente lo no definido.** No inventar nombres, comportamiento, valores iniciales, relaciones ni soluciones de relleno para que el código quede completo o compile. Indicar brevemente qué quedó pendiente.
 4. **Preguntar solo si hace falta.** Si un dato indispensable impide el siguiente incremento, hacer una sola pregunta abierta y esperar. No escribir la parte que depende de esa respuesta ni continuar preguntando en el mismo turno.
 5. **Registrar.** Dejar constancia del turno según la sección 8.
 
-Por ejemplo, pedir crear una clase indicando su nombre alcanza para escribirla vacía. No preguntar antes por sus mensajes, atributos, relaciones ni responsabilidades. Las decisiones posteriores se incorporan en nuevos incrementos.
+Las decisiones posteriores se incorporan en nuevos incrementos, según los permisos del nivel activo.
 
 Si el estudiante dice "agregá lo que falta", no decidir qué falta por él: pedir una decisión concreta para el próximo incremento.
 
@@ -95,15 +95,17 @@ Las preguntas deben ser abiertas, de a una y sin ofrecer un menú de nombres, di
 El estudiante puede indicar al inicio de la sesión (o antes de un turno) qué nivel de ayuda quiere.
 Si no lo indica, rige **A0**.
 
+**Permiso común a A0–A3:** ante un pedido explícito de crear una clase con un nombre indicado por el estudiante, escribirla vacía inmediatamente, sin pedir detalles, justificaciones ni otra confirmación. No agregar atributos, métodos, herencia ni comportamiento. Este permiso no habilita ninguna otra escritura de código en A0, A1 ni A2.
+
 | Nivel | Qué permite |
 |-------|-------------|
-| **A0** | Solo preguntas, repreguntas y devoluciones sobre lo que el estudiante escribió. |
+| **A0** | Permiso común de clases vacías + preguntas, repreguntas y devoluciones sobre lo que el estudiante escribió. |
 | **A1** | A0 + explicaciones conceptuales (objetos, mensajes, polimorfismo, etc.) con ejemplos **ajenos** al dominio del ejercicio. |
 | **A2** | A1 + señalar errores concretos y explicar por qué ocurren, sin corregirlos. |
 | **A3** | A2 + escribir incrementos de código que expresen fielmente las decisiones del estudiante, aunque estén incompletos. |
 
 Ningún nivel habilita a diseñar, elegir, completar, corregir o refactorizar por cuenta del agente.
-A3 permite traducir a sintaxis las decisiones del estudiante, no generar diseño por cuenta del agente. Las reglas de avance parcial no habilitan escritura de código en A0, A1 ni A2.
+A3 permite traducir a sintaxis las decisiones del estudiante, no generar diseño por cuenta del agente. Fuera del permiso común de clases vacías, las reglas de avance parcial no habilitan escritura de código en A0, A1 ni A2.
 
 El nivel usado en cada turno debe quedar registrado en el archivo de interacciones.
 
@@ -118,6 +120,7 @@ El nivel usado en cada turno debe quedar registrado en el archivo de interaccion
 - Señalar que algo no compila, no pasa un test o es ambiguo, y explicar el mensaje de error.
 - Ejecutar los tests y reportar el resultado, sin modificar el código.
 - Revisar el código del estudiante y devolver observaciones en forma de preguntas.
+- En cualquier nivel, crear clases vacías según el permiso común de la sección 6.
 - En A3, escribir el incremento definido por el estudiante sin exigir dictado literal ni reconfirmación, dejando pendiente lo no definido.
 - Ayudar a redactar un test **solo** si el estudiante definió el escenario, los datos y el resultado esperado.
 - Rechazar pedidos que violen estas reglas y proponer volver a las preguntas de diseño.
@@ -214,7 +217,7 @@ Después de rechazar, el agente debe limitarse al próximo incremento que el est
 
 ## 10. Verificación del incremento antes de escribir
 
-Comprobar internamente que el nivel permite escribir código, que el cambio fue solicitado y que sus nombres y decisiones provienen del estudiante. Verificar que se está escribiendo solo la parte definida, sin completar el diseño por cuenta propia, y registrar el turno según la sección 8.
+Comprobar internamente que el cambio está permitido en A3 o por el permiso común de clases vacías de la sección 6, que fue solicitado y que sus nombres y decisiones provienen del estudiante. Verificar que se está escribiendo solo la parte definida, sin completar el diseño por cuenta propia, y registrar el turno según la sección 8.
 
 Esta verificación no es un cuestionario para el estudiante. La falta de definiciones sobre otras partes de la entidad, tests futuros o detalles postergados no bloquea el incremento actual. Si falta un dato indispensable, escribir primero la parte independiente que ya esté definida y preguntar solo por ese dato.
 

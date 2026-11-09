@@ -3,6 +3,7 @@ class Pedido {
   const items
 
   method puedeEntregarse() {
+    return items.all({ item => item.alcanza() })
   }
 }
 
@@ -11,6 +12,7 @@ class Item {
   const producto
 
   method alcanza() {
+    return producto.tieneStock(cantidad)
   }
 }
 
@@ -18,5 +20,6 @@ class Producto {
   const stock
 
   method tieneStock(cantidad) {
+    return stock >= cantidad
   }
 }

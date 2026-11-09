@@ -348,3 +348,68 @@ class Producto {
 **Verificación:** no aplica
 
 ---
+
+## Turno 009 — 2026-11-09T19:14:15-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Los 3 métodos devuelven booleanos:
+> 
+> - `Producto.tieneStock(cantidad)`: devuelve si `stock >= cantidad`
+> 
+> - `Item.alcanza()`: devuelve si el producto tieneStock para la cantidad del item
+> 
+> 
+> - `Pedido.puedeEntregarse()` se cumple cuando si todos sus items devuelve True al preguntarle `alcanza()`
+
+**Respuesta del agente:**
+
+> Implementé los tres métodos en `corralon.wlk` según lo que definiste (consultas booleanas): `Producto.tieneStock(cantidad)` devuelve `stock >= cantidad`; `Item.alcanza()` devuelve `producto.tieneStock(cantidad)`; `Pedido.puedeEntregarse()` devuelve si todos los `items` cumplen `alcanza()`.
+>
+> Esto cubre la parte de stock del primer requerimiento. El enunciado también menciona otras condiciones (herramientas/materiales según distancia/cantidad) — si querés trabajarlas, decime qué entidad/atributos/mensajes querés definir para el próximo incremento y cómo se llama cada uno.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: `puedeEntregarse`, `alcanza`, `tieneStock(cantidad)` definidos como consultas booleanas.
+- Métodos y parámetros: `tieneStock(cantidad)` usa `cantidad`; lógica definida por el estudiante.
+- Datos y relaciones: sin cambios.
+- Responsabilidades: `Producto` compara stock con cantidad solicitada; `Item` delega en su `producto` con su `cantidad`; `Pedido` verifica que todos sus `items` alcancen (stock).
+
+**Código escrito:** sí
+
+```wollok
+class Pedido {
+  const distancia
+  const items
+
+  method puedeEntregarse() {
+    return items.all({ item => item.alcanza() })
+  }
+}
+
+class Item {
+  const cantidad
+  const producto
+
+  method alcanza() {
+    return producto.tieneStock(cantidad)
+  }
+}
+
+class Producto {
+  const stock
+
+  method tieneStock(cantidad) {
+    return stock >= cantidad
+  }
+}
+```
+
+**Verificación:** no aplica (no ejecuté tests).
+
+---

@@ -257,3 +257,39 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 007 — 2026-11-09T19:09:44-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Los atributos llevan esos nombres: "cantidad", "distancia", "items", "producto", etc.
+> 
+> Por ahora todos constantes
+
+**Respuesta del agente:**
+
+> Tomo como definidos `distancia` e `items` en `Pedido`, y `cantidad` y `producto` en `Item`, todos constantes. Me falta confirmar el nombre exacto del atributo de stock en `Producto` (dijiste “etc.”).
+>
+> Para escribirlos en `corralon.wlk` necesito también cómo se inicializa cada uno (Wollok no usa constructores; podés indicar un valor inicial por defecto o que se define al crear la instancia, según lo que vos decidas). ¿Cuál es el nombre exacto del atributo de stock en `Producto` y cómo querés inicializar `distancia`, `items`, `cantidad`, `producto` y ese atributo de stock?
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: sin cambios.
+- Métodos y parámetros: sin cambios.
+- Datos y relaciones: `Pedido` tendrá `const distancia` y `const items`; `Item` tendrá `const cantidad` y `const producto`; `Producto` tendrá un atributo constante de stock (nombre exacto pendiente). Inicialización pendiente para todos.
+- Responsabilidades: sin cambios.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

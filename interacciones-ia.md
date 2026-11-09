@@ -118,3 +118,50 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 004 — 2026-11-09T19:00:11-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** example.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Clase: Pedido
+> Método: puedeEntregarse
+> 
+> Clase: Item
+> Método: alcanza
+> 
+> Clase Pedido
+> Método: tieneStock y recibe una cantidad
+> 
+> Generá el código que puedas y guiame para completar lo faltante.
+> 
+> Eliminá el archivo example.wlk que solo tiene código de ejemplo
+
+**Respuesta del agente:**
+
+> Eliminé `example.wlk` como pediste. **Atención:** `testExample.wtest` importa `example.pepita`, así que ese test va a quedar roto hasta que vos decidas qué hacer con `testExample.wtest`.
+>
+> Definiciones que registré: clase `Pedido` con método `puedeEntregarse`; clase `Item` con método `alcanza`. También indicaste “Clase Pedido / Método: tieneStock y recibe una cantidad”, pero por el diseño que describiste antes parece corresponder al producto (y ya hay una clase `Pedido`) — no quiero asumirlo.
+>
+> Para generar el código que pueda sin tomar decisiones por vos, necesito que me aclares en un solo mensaje: **(1)** ¿a qué clase pertenece exactamente `tieneStock(cantidad)` y cuál es el nombre exacto de esa clase? **(2)** ¿en qué archivo `.wlk` querés que cree estas clases? Cuando me respondas eso, puedo crear las clases con los métodos que ya definiste y te indico qué falta definir para completar los cuerpos (por ejemplo, en `Pedido`: cómo se llaman/guardan sus items y cómo verificar que todos cumplan `alcanza`; en `Item`: nombres de referencias a producto y cantidad y cómo usar `tieneStock`; en la clase del producto: nombre del atributo de stock).
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: clase `Pedido`; clase `Item`. Clase para `tieneStock(cantidad)` pendiente de aclaración (posible producto, nombre exacto no confirmado).
+- Mensajes: `Pedido.puedeEntregarse`; `Item.alcanza`; `tieneStock(cantidad)` en clase pendiente de aclaración.
+- Métodos y parámetros: `tieneStock` recibe una cantidad (nombre del parámetro no especificado).
+- Datos y relaciones: pendientes (items en Pedido, producto/cantidad en Item, stock en producto).
+- Responsabilidades: coherentes con Turno 003, pendientes de concretar en nombres/código.
+
+**Código escrito:** no (se eliminó `example.wlk` por pedido explícito)
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica (nota: `testExample.wtest` puede fallar por importar `example.wlk` eliminado)
+
+---

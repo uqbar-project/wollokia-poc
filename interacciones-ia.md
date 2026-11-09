@@ -165,3 +165,59 @@ _(no corresponde)_
 **Verificación:** no aplica (nota: `testExample.wtest` puede fallar por importar `example.wlk` eliminado)
 
 ---
+
+## Turno 005 — 2026-11-09T19:05:17-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** testExample.wtest, corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Eliminá también el archivo testExample.wtest
+> 
+> 1. Me confundí, `tieneStock(cantidad)` va en la clase Producto
+> 
+> 2. en un archivo `corralon.wlk`
+
+**Respuesta del agente:**
+
+> Eliminé `testExample.wtest` y creé `corralon.wlk` con las clases y métodos que definiste hasta ahora (cuerpos vacíos/incompletos, porque todavía no definiste su lógica ni los datos necesarios).
+>
+> Para completar lo faltante, necesito tus decisiones (cuando quieras, de a un incremento):
+> - En `Pedido.puedeEntregarse()`: ¿cómo se llama la referencia/atributo que guarda sus items y cómo querés verificar que todos los items cumplan `alcanza`?
+> - En `Item.alcanza()`: ¿cómo se llaman las referencias a su producto y a su cantidad, y cómo querés consultar `tieneStock(...)` al producto?
+> - En `Producto.tieneStock(cantidad)`: ¿cómo se llama el atributo/referencia donde el producto conoce su stock y cómo querés comparar con `cantidad`?
+>
+> También sobre `puedeEntregarse`/`alcanza`/`tieneStock`: ¿cada uno debe devolver un valor (consulta) o hacer otra cosa? Decime qué querés para el próximo método que trabajemos.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: clase `Pedido`; clase `Item`; clase `Producto` (confirmada).
+- Mensajes: `Pedido.puedeEntregarse()`; `Item.alcanza()`; `Producto.tieneStock(cantidad)`.
+- Métodos y parámetros: `tieneStock` recibe `cantidad` (nombre de parámetro tomado del texto del estudiante).
+- Datos y relaciones: pendientes (items en Pedido, producto/cantidad en Item, stock en Producto).
+- Responsabilidades: según Turno 003, pendientes de implementar con nombres/datos definidos por el estudiante.
+
+**Código escrito:** sí
+
+```wollok
+class Pedido {
+  method puedeEntregarse() {
+  }
+}
+
+class Item {
+  method alcanza() {
+  }
+}
+
+class Producto {
+  method tieneStock(cantidad) {
+  }
+}
+```
+
+**Verificación:** no aplica (no ejecuté tests; el proyecto no tiene tests activos definidos por el estudiante).
+
+---

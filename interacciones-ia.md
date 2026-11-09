@@ -863,3 +863,51 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 021 — 2026-11-09T19:39:11-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wtest, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> El test se llama "Pedido con más restricciones puede entregarse". Y sí, los datos son los mismos salvo el cambio de las clases que se instancian para los productos
+
+**Respuesta del agente:**
+
+> Agregué el test `"Pedido con más restricciones puede entregarse"` en `corralon.wtest`, con los mismos datos que el anterior, instanciando `arena` como `Material` y `martillo`/`soldadora` como `Herramienta`.
+>
+> Ejecuté `wollok test`: **2 pasados**, 0 errores, 0 warnings.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: verifica `puedeEntregarse()`.
+- Métodos y parámetros: no aplica.
+- Datos y relaciones: test con distancia 35; arena `Material` stock 10 cantidad 2; martillo `Herramienta` stock 10 cantidad 3; soldadora `Herramienta` stock 10 cantidad 1; resultado esperado verdadero.
+- Responsabilidades: no aplica.
+
+**Código escrito:** sí
+
+```wollok
+test "Pedido con más restricciones puede entregarse" {
+  const arena = new Material(stock = 10)
+  const martillo = new Herramienta(stock = 10)
+  const soldadora = new Herramienta(stock = 10)
+
+  const items = [
+    new Item(cantidad = 2, producto = arena),
+    new Item(cantidad = 3, producto = martillo),
+    new Item(cantidad = 1, producto = soldadora)
+  ]
+
+  const pedido = new Pedido(distancia = 35, items = items)
+
+  assert.that(pedido.puedeEntregarse())
+}
+```
+
+**Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 2 pasados, 0 errores, 0 warnings.
+
+---

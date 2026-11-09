@@ -35,4 +35,7 @@ class Herramienta inherits Producto {
 }
 
 class Material inherits Producto {
+  override method tieneStock(cantidad, pedido) {
+    return super(cantidad, pedido) && cantidad >= 2
+  }
 }

@@ -793,3 +793,41 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 019 — 2026-11-09T19:35:53-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> cantidad >= 2
+
+**Respuesta del agente:**
+
+> Implementé `override method tieneStock(cantidad, pedido)` en `Material` con `super(cantidad, pedido) && cantidad >= 2`.
+>
+> Ejecuté `wollok test`: **1 pasado** (`"Pedido puede entregarse"`), 0 errores, 0 warnings.
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: `Material.tieneStock(cantidad, pedido)` redefinido.
+- Métodos y parámetros: override combina stock (`super`) y `cantidad >= 2`.
+- Datos y relaciones: sin cambios.
+- Responsabilidades: `Material` solo puede entregarse si hay stock suficiente y la cantidad solicitada es >= 2.
+
+**Código escrito:** sí
+
+```wollok
+class Material inherits Producto {
+  override method tieneStock(cantidad, pedido) {
+    return super(cantidad, pedido) && cantidad >= 2
+  }
+}
+```
+
+**Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 1 pasado, 0 errores, 0 warnings.
+
+---

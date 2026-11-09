@@ -586,3 +586,69 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 014 — 2026-11-09T19:30:12-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Ahh, como la distancia está en pedido, agregá el parámetro `pedido` en `alcanza()` y `tieneStock(cantidad)` para que le llegue a la herramienta
+
+**Respuesta del agente:**
+
+> Actualicé `corralon.wlk` según tu decisión: `Producto.tieneStock(cantidad, pedido)`, `Item.alcanza(pedido)` que llama `producto.tieneStock(cantidad, pedido)`, y `Pedido.puedeEntregarse()` pasa `self` a `item.alcanza(self)`. No redefiní todavía `Herramienta.tieneStock(...)` porque falta una decisión.
+>
+> Ejecuté `wollok test`: **1 pasado** (`"Pedido puede entregarse"`), 0 errores, 1 warning (`distancia` sin uso en `corralon.wlk:2`).
+>
+> Para implementar la condición de `Herramienta` (stock suficiente y distancia del pedido hasta 50 km), ¿cómo querés obtener la `distancia` desde `pedido`: qué mensaje/método/getter querés agregar en `Pedido` (nombre exacto) o preferís otra forma que vos definas?
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: `Item.alcanza(pedido)`; `Producto.tieneStock(cantidad, pedido)` (y redefiniciones compatibles). `Pedido.puedeEntregarse()` usa `alcanza(self)`.
+- Métodos y parámetros: parámetro `pedido` agregado a `alcanza` y `tieneStock` para que la información llegue a `Herramienta`.
+- Datos y relaciones: `Item`/`Producto` reciben `pedido` como parámetro en la verificación; acceso a `distancia` desde `pedido` pendiente de definir.
+- Responsabilidades: propagación de `pedido` para evaluación de condiciones; condición completa de `Herramienta` pendiente.
+
+**Código escrito:** sí
+
+```wollok
+class Pedido {
+  const distancia
+  const items
+
+  method puedeEntregarse() {
+    return items.all({ item => item.alcanza(self) })
+  }
+}
+
+class Item {
+  const cantidad
+  const producto
+
+  method alcanza(pedido) {
+    return producto.tieneStock(cantidad, pedido)
+  }
+}
+
+class Producto {
+  const stock
+
+  method tieneStock(cantidad, pedido) {
+    return stock >= cantidad
+  }
+}
+
+class Herramienta inherits Producto {
+}
+
+class Material inherits Producto {
+}
+```
+
+**Verificación:** `wollok test` en `/Users/palumbon/pdep/wollokia-poc`: 1 pasado, 0 errores, 1 warning (`Unused variable at corralon.wlk:2`).
+
+---

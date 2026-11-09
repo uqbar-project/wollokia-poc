@@ -686,3 +686,37 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 016 — 2026-11-09T19:33:11-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Hacele un getter al pedido para saber su distancia. Y usá `<=` en la condición.
+> 
+> Escribí código
+
+**Respuesta del agente:**
+
+> Tomo la decisión de usar `<= 50` para la condición de distancia. Para agregar el getter en `Pedido`, necesito el nombre exacto del método que querés (por ejemplo, cómo querés llamarlo). ¿Cuál es el nombre exacto del getter de distancia en `Pedido`? Apenas me lo indiques, agrego ese getter e implemento `override method tieneStock(cantidad, pedido)` en `Herramienta` con stock suficiente y `pedido.<getter>() <= 50` (usando el nombre que definas).
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: `Pedido` tendrá un getter para distancia (nombre exacto pendiente).
+- Mensajes: getter de distancia en `Pedido` pendiente de nombre; `Herramienta.tieneStock(cantidad, pedido)` con condición `<= 50`.
+- Métodos y parámetros: override en `Herramienta` pendiente hasta definir nombre del getter.
+- Datos y relaciones: acceso a distancia vía getter.
+- Responsabilidades: `Herramienta` válida stock y distancia <= 50 km.
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

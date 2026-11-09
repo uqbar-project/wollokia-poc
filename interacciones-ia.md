@@ -552,3 +552,37 @@ class Material inherits Producto {
 **Verificación:** no aplica (no ejecuté tests en este turno).
 
 ---
+
+## Turno 013 — 2026-11-09T19:28:27-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Redefiní tieneStock(cantidad) en Herramienta pasa saber, además, si la distancia del pedido es de hasta 50 km.
+
+**Respuesta del agente:**
+
+> Para redefinir ese comportamiento en `Herramienta` necesito una decisión tuya, porque hoy `tieneStock(cantidad)` solo recibe `cantidad` y ni `Herramienta` ni `Item` conocen la `distancia` del `Pedido`.
+>
+> ¿Cómo querés que `Herramienta` acceda a la distancia del pedido: qué nombre exacto de método/mensaje querés usar (¿seguís con `tieneStock` o usás otro?), qué parámetros debe recibir, y qué cambios querés hacer en `Item.alcanza()` y/o `Pedido.puedeEntregarse()` para pasarle esa información?
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: `Herramienta` debe considerar stock y distancia <= 50 km (condición expresada; implementación pendiente).
+- Mensajes: intención de redefinir `tieneStock(cantidad)` en `Herramienta` (firma/integración pendiente por falta de acceso a distancia).
+- Métodos y parámetros: pendientes (cómo pasa la distancia).
+- Datos y relaciones: `distancia` está en `Pedido`; relación necesaria para la condición pendiente de definir.
+- Responsabilidades: `Herramienta` condiciona entrega por stock y distancia (detalle pendiente).
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

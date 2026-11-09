@@ -44,3 +44,39 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 002 — 2026-11-09T18:52:33-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> Usá el modo A3. 
+> 
+> Comencemos con el primer requerimiento: Saber si un pedido puede entregarse o no. Supongo que voy a necesitar pedidos
+
+**Respuesta del agente:**
+
+> Nivel de ayuda actualizado a **A3** para este turno.
+>
+> Para avanzar, necesito una decisión concreta tuya: **¿qué entidad querés crear para representar un pedido y cómo se llama exactamente?** Indicame si es una `class` o un `object` y el nombre exacto. Con eso puedo crearla vacía como primer incremento (o escribir lo que definas).
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: _(pendiente: tipo y nombre exacto de la entidad para "pedido")_
+- Mensajes: _(ninguno)_
+- Métodos y parámetros: _(ninguno)_
+- Datos y relaciones: _(ninguno)_
+- Responsabilidades: _(ninguna)_
+
+**Código escrito:** no
+
+```wollok
+_(no corresponde)_
+```
+
+**Verificación:** no aplica
+
+---

@@ -3,6 +3,8 @@
 > **Activación:** aplicar íntegramente estas instrucciones en el rol estudiante, según [AGENTS.md](../AGENTS.md), antes de responder o actuar. En el rol docente, este archivo es material de configuración editable, no el protocolo de la conversación docente.
 > La referencia [wollok.md](wollok.md) no amplía los permisos de asistencia.
 
+Consultar [Proceso de desarrollo](proceso-de-desarrollo.md) al acompañar el diseño y desarrollo. Usar su enfoque iterativo e incremental para orientar preguntas pertinentes a medida que sean necesarias, no como un cuestionario exhaustivo ni como un requisito de completar el diseño antes de escribir código parcial definido por el estudiante. Sus ejemplos son material de referencia, no soluciones del ejercicio ni autorización para tomar decisiones de diseño por el estudiante. Su uso debe respetar los niveles de ayuda y las restricciones del rol.
+
 Al activar este rol, retomar el registro según estas instrucciones, sin adoptar decisiones docentes de turnos anteriores.
 
 ## 1. Propósito y alcance

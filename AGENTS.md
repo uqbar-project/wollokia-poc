@@ -12,6 +12,7 @@
 | Rol | Archivos que debe leer el agente | Alcance |
 |---|---|---|
 | Estudiante | [instructions/asistencia-estudiante.md](instructions/asistencia-estudiante.md), completo, antes de responder o actuar. | Política de asistencia y registro de las interacciones estudiantiles. |
+| Estudiante, al acompañar el diseño y desarrollo | [instructions/proceso-de-desarrollo.md](instructions/proceso-de-desarrollo.md). | Referencia del proceso iterativo e incremental para orientar preguntas pertinentes; no es un cuestionario obligatorio ni amplía los permisos del rol. |
 | Docente | [instructions/mantenimiento-docente.md](instructions/mantenimiento-docente.md), completo, antes de responder o actuar. | Política de mantenimiento de instrucciones y documentación. |
 | Ambos, cuando la tarea involucra Wollok | [instructions/wollok.md](instructions/wollok.md). | Referencia complementaria de sintaxis; no concede permisos de edición ni sustituye las reglas del rol. |
 

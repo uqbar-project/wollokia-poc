@@ -293,3 +293,58 @@ _(no corresponde)_
 **Verificación:** no aplica
 
 ---
+
+## Turno 008 — 2026-11-09T19:11:31-03:00
+
+**Nivel de ayuda:** A3
+
+**Archivos involucrados:** corralon.wlk, interacciones-ia.md
+
+**Mensaje del estudiante:**
+
+> El atributo se llama "stock" y por ahora no hay valores default, todos se definen al instanciar
+
+**Respuesta del agente:**
+
+> Actualicé `corralon.wlk`: agregué `const distancia` y `const items` en `Pedido`, `const cantidad` y `const producto` en `Item`, y `const stock` en `Producto`, todos sin valor por defecto (se definirán al instanciar, según lo que indicaste).
+>
+> Siguiente paso (cuando quieras, elegí uno): definir la lógica de `Producto.tieneStock(cantidad)` usando `stock` y `cantidad` (y si devuelve un valor), o definir `Item.alcanza()` usando `producto` y `cantidad`, o definir `Pedido.puedeEntregarse()` usando `items`. ¿Cuál querés trabajar ahora y cómo querés que se comporte?
+
+**Decisiones de diseño tomadas por el estudiante:**
+
+- Entidad: sin cambios.
+- Mensajes: sin cambios.
+- Métodos y parámetros: sin cambios.
+- Datos y relaciones: `Pedido`: `const distancia`, `const items` (sin default, al instanciar). `Item`: `const cantidad`, `const producto` (sin default, al instanciar). `Producto`: `const stock` (sin default, al instanciar).
+- Responsabilidades: sin cambios.
+
+**Código escrito:** sí
+
+```wollok
+class Pedido {
+  const distancia
+  const items
+
+  method puedeEntregarse() {
+  }
+}
+
+class Item {
+  const cantidad
+  const producto
+
+  method alcanza() {
+  }
+}
+
+class Producto {
+  const stock
+
+  method tieneStock(cantidad) {
+  }
+}
+```
+
+**Verificación:** no aplica
+
+---

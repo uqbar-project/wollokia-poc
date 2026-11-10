@@ -7,6 +7,8 @@ Proyecto de investigación sobre asistencia con IA en el aprendizaje de diseño 
 
 ## 1. Preparar el entorno
 
+Para el recorrido de aprendizaje se necesitan Git, VS Code, Node.js/npm, Wollok y OpenCode, según los pasos siguientes. **Python es opcional**: solo se utiliza para automatizar el registro; el [registro manual](instructions/registro-manual.md) funciona con un editor y Git, sin Python ni scripts.
+
 Instalar [Git](https://git-scm.com/downloads), [Visual Studio Code](https://code.visualstudio.com/download) y [Node.js con npm](https://nodejs.org/en/download). Para elegir la versión de Node compatible con Wollok, seguir la [guía oficial de instalación](https://www.wollok.org/getting_started/installation_recomended/).
 
 Clonar el repositorio desde su URL en GitHub o abrir una copia local que conserve su carpeta `.git`. En VS Code, usar **Archivo → Abrir carpeta** y seleccionar la raíz `prueba-ia-pdep`, donde están `AGENTS.md` y `package.json`.
@@ -34,6 +36,21 @@ git config user.email "correo-del-participante@example.com"
 3. En **Configuración**, buscar `wollok` e indicar `wollok` como ruta del CLI. Si no se encuentra, revisar el `PATH` o indicar la ruta completa del ejecutable.
 
 La [guía oficial de Wollok](https://www.wollok.org/getting_started/installation/) describe estos componentes por separado: las extensiones no sustituyen al intérprete. El proyecto declara `wollokVersion: "4.2.3"` en `package.json`; no es el número de versión del paquete CLI. No hay scripts npm ni dependencias declaradas que requieran ejecutar `npm install` dentro del proyecto.
+
+### Python opcional para automatizar el registro
+
+El script requiere **Python 3.9 o superior**, `python3` disponible en la terminal, la biblioteca estándar y datos de zona horaria. No requiere paquetes `pip`, entorno virtual ni instalar dependencias Python del proyecto.
+
+Si se quiere usar la automatización, instalar una versión de Python 3 con mantenimiento vigente desde [python.org](https://www.python.org/downloads/) usando el instalador del sistema correspondiente (Windows o macOS), o mediante el gestor de paquetes de la distribución en Linux. Cerrar y abrir la terminal después de instalar y comprobar:
+
+```sh
+python3 --version
+python3 -c 'import sys; assert sys.version_info >= (3, 9), "Se requiere Python >= 3.9"; import zoneinfo; print(zoneinfo.ZoneInfo("America/Argentina/Buenos_Aires"))'
+```
+
+Ambos comandos deben terminar correctamente antes de usar el script. Los datos de zona horaria deben estar disponibles para [`zoneinfo`](https://docs.python.org/3/library/zoneinfo.html); si faltan, no hace falta instalar un paquete adicional para seguir trabajando: usar la vía manual. Si el instalador solo deja disponible otro nombre de comando, no asumir que `python3` existe: comprobarlo o usar también la vía manual.
+
+**No instalar Python como condición para continuar.** Ante comando inexistente, versión incompatible o error de ejecución, seguir el [procedimiento manual y de recuperación](instructions/registro-manual.md). Si el intento automático pudo modificar el repositorio, inspeccionar primero HEAD, índice y registro para no duplicar el turno. Un error de autorización o seguridad debe resolverse, no evitarse con el procedimiento manual.
 
 ## 2. Instalar e iniciar OpenCode
 
@@ -77,9 +94,7 @@ opencode --agent docente
 
 El agente `docente` aplica [instructions/mantenimiento-docente.md](instructions/mantenimiento-docente.md) para mantener `AGENTS.md`, los agentes de `.opencode/agents/`, `opencode.json` y las instrucciones del proyecto. No aplica a sus turnos el protocolo de asistencia al estudiante. No autoriza automáticamente instalaciones, commits ni pushes.
 
-Cada agente tiene un rol fijo: escribir «modo docente» o «modo estudiante» **no lo cambia**. OpenCode permite seleccionar otro agente durante la sesión con `Tab`; al activarse, el agente anuncia su rol y relee sus instrucciones, sin heredar autorizaciones del anterior. Para separar los historiales de aprendizaje y mantenimiento, se recomienda usar sesiones distintas.
-
-Fuera de OpenCode, el rol permanece fijo durante la sesión: docente en Codex y estudiante en las demás herramientas, según `AGENTS.md`.
+OpenCode permite seleccionar otro agente durante la sesión con `Tab`; al activarse, el agente anuncia su rol y relee sus instrucciones, sin heredar autorizaciones del anterior. Para separar los historiales de aprendizaje y mantenimiento, se recomienda usar sesiones distintas.
 
 ### Qué instrucciones se aplican
 
@@ -95,7 +110,7 @@ Fuera de OpenCode, el rol permanece fijo durante la sesión: docente en Codex y 
 
 OpenCode descubre ambos agentes por sus archivos en `.opencode/agents/`. Los documentos de `instructions/` son instrucciones locales, **no skills nativos**: deben leerse obligatoriamente según `AGENTS.md`, no cargarse bajo demanda. Otras herramientas leen directamente las mismas políticas, sin depender de los adaptadores de OpenCode.
 
-En modo estudiante se registra cada turno en [interacciones-ia.md](interacciones-ia.md), sin borrar entradas anteriores. `instructions/asistencia-estudiante.md` también exige un commit después de cada prompt; por eso es necesaria la identidad de Git. El archivo exige además autorización explícita para hacer commits: si no está concedida, debe resolverse antes de ejecutar esa acción. No se deben hacer pushes sin pedido explícito.
+En modo estudiante se registra cada turno en [interacciones-ia.md](interacciones-ia.md), sin borrar entradas anteriores, y se crea un commit con autorización explícita e identidad de Git configurada. Usar el [comando automático](instructions/registro-automatico.md) si Python está disponible, o el [registro manual sin Python ni scripts](instructions/registro-manual.md) si falta o falla. Ambas vías conservan el mismo formato y las restricciones de seguridad; nunca deben duplicar un turno ya registrado ni incluir cambios ajenos. No hacen push.
 
 **La selección de agente no autentica docentes ni controla accesos.** Quien tenga acceso a esa selección puede elegir `docente` u otro agente. Una experiencia restringida para estudiantes necesita un control externo al prompt.
 

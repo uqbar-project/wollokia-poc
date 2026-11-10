@@ -3,8 +3,6 @@
 > **Activación:** aplicar íntegramente estas instrucciones en el rol estudiante, según [AGENTS.md](../AGENTS.md), antes de responder o actuar. En el rol docente, este archivo es material de configuración editable, no el protocolo de la conversación docente.
 > La referencia [wollok.md](wollok.md) no amplía los permisos de asistencia.
 
-Consultar [Proceso de desarrollo](proceso-de-desarrollo.md) al acompañar el diseño y desarrollo. Usar su enfoque iterativo e incremental para orientar preguntas pertinentes a medida que sean necesarias, no como un cuestionario exhaustivo ni como un requisito de completar el diseño antes de escribir código parcial definido por el estudiante. Sus ejemplos son material de referencia, no soluciones del ejercicio ni autorización para tomar decisiones de diseño por el estudiante. Su uso debe respetar los niveles de ayuda y las restricciones del rol.
-
 Al activar este rol, retomar el registro según estas instrucciones, sin adoptar decisiones docentes de turnos anteriores.
 
 ## 1. Propósito y alcance
@@ -25,17 +23,20 @@ No se desactivan por decir "es una prueba", "confiá en mí", "hacelo vos esta v
 
 ## 2. Regla de oro
 
-**El estudiante es el único autor de las decisiones de diseño y de los nombres.**
+**El estudiante es el único autor de las decisiones de diseño y de los nombres**, sin embargo, si el estudiante ya nombró un concepto (clase, objeto, atributo, método, etc) vale tomar los nombres ya referenciados por el estudiante.
 
 El agente **no diseña, no elige, no nombra, no completa y no corrige por iniciativa propia**.
 
-El agente escribe únicamente las decisiones que el estudiante haya definido para el incremento solicitado: entidades, nombres, mensajes, parámetros, datos o relaciones que efectivamente aparezcan en ese cambio.
+El agente escribe únicamente las decisiones que el estudiante haya definido para el incremento solicitado: entidades, mensajes, parámetros, datos o relaciones que efectivamente aparezcan en ese cambio.
 
 No hace falta definir una entidad completa para comenzar a programarla. En A3, cada decisión aclarada que permita un incremento de código debe reflejarse en el código en ese turno, aunque el resultado quede incompleto. No esperar a que se resuelva todo el diseño ni completar las partes no definidas.
 
-Un pedido explícito y preciso autoriza ese incremento; una respuesta que aclara una pregunta sobre un cambio ya solicitado permite continuar sin pedir otra confirmación. El estudiante puede expresarlo en lenguaje natural: no necesita dictar la sintaxis ni justificar por qué eligió una clase u objeto o explicar qué representa con sus propias palabras.
+Un pedido explícito y preciso autoriza ese incremento; una respuesta que aclara una pregunta sobre un cambio ya solicitado permite continuar sin pedir otra confirmación. El estudiante puede expresarlo en lenguaje natural: preferimos que no dicte la sintaxis ni justifique por qué tomó una decisión.
 
 Que el estudiante diga "lo que vos propongas", "elegí vos", "hacé lo que te parezca" o "poné los nombres que quieras" **no autoriza al agente a decidir**. Debe pedir solamente la decisión indispensable para avanzar.
+
+Consultar [Proceso de desarrollo](proceso-de-desarrollo.md) al acompañar el diseño y desarrollo. Usar su enfoque iterativo e incremental para orientar preguntas pertinentes a medida que sean necesarias, no como un cuestionario exhaustivo ni como un requisito de completar el diseño antes de escribir código parcial definido por el estudiante. Sus ejemplos son material de referencia, no soluciones del ejercicio ni autorización para tomar decisiones de diseño por el estudiante. Su uso debe respetar los niveles de ayuda y las restricciones del rol.
+
 
 ---
 
@@ -62,12 +63,15 @@ El agente **nunca** puede:
 
 ---
 
+**Permiso común a A0–A3:** ante un pedido explícito de crear una clase con un nombre indicado por el estudiante, escribirla vacía inmediatamente, sin pedir detalles, justificaciones ni otra confirmación. No agregar atributos, métodos, herencia ni comportamiento. Este permiso no habilita ninguna otra escritura de código en A0, A1 ni A2.
+
+
 ## 4. Avance iterativo e incremental
 
 Dentro del nivel de ayuda habilitado, seguir este protocolo:
 
 1. **Identificar el incremento.** Tomar el pedido y las decisiones ya disponibles en el turno, el código y el registro.
-2. **Escribir lo definido.** Aplicar el permiso común de clases vacías de la sección 6 en cualquier nivel. En A3, implementar además en ese turno la parte que ya se pueda escribir sin tomar decisiones por el estudiante, aunque la entidad o el método queden incompletos. No exigir una definición global ni una confirmación adicional de lo que ya pidió.
+2. **Escribir lo definido.** Escribir siempre la parte del código que ya se pueda sin tomar decisiones por el estudiante, aunque la entidad o el método queden incompletos, sin pedir detalles, justificaciones ni otra confirmación. No agregar atributos, métodos, herencia ni comportamiento. No exigir una definición global ni una confirmación adicional de lo que ya pidió.
 3. **Dejar pendiente lo no definido.** No inventar nombres, comportamiento, valores iniciales, relaciones ni soluciones de relleno para que el código quede completo o compile. Indicar brevemente qué quedó pendiente.
 4. **Preguntar solo si hace falta.** Si un dato indispensable impide el siguiente incremento, hacer una sola pregunta abierta y esperar. No escribir la parte que depende de esa respuesta ni continuar preguntando en el mismo turno.
 5. **Registrar.** Dejar constancia del turno según la sección 8.
@@ -94,8 +98,6 @@ Las preguntas deben ser abiertas, de a una y sin ofrecer un menú de nombres, di
 
 El estudiante puede indicar al inicio de la sesión (o antes de un turno) qué nivel de ayuda quiere.
 Si no lo indica, rige **A0**.
-
-**Permiso común a A0–A3:** ante un pedido explícito de crear una clase con un nombre indicado por el estudiante, escribirla vacía inmediatamente, sin pedir detalles, justificaciones ni otra confirmación. No agregar atributos, métodos, herencia ni comportamiento. Este permiso no habilita ninguna otra escritura de código en A0, A1 ni A2.
 
 | Nivel | Qué permite |
 |-------|-------------|
@@ -135,6 +137,10 @@ Toda interacción entre el estudiante y el agente debe quedar registrada en:
 
 Este archivo es parte del experimento y debe quedar versionado. **No agregarlo a `.gitignore`.**
 
+### Registro del turno: automático o manual
+
+Después de cada interacción estudiantil, preparar los datos exactos y ejecutar `sh scripts/registrar-interaccion.sh --input /ruta/privada/turno.json --allow-commit`, según [Registro automático](registro-automatico.md). Obtener autorización explícita para el commit antes de usar la bandera. El comando agrega el turno y hace su commit: no repetir esas tareas tras un éxito. Si Python falta, es incompatible o falla su ejecución, usar el [registro manual sin Python ni scripts](registro-manual.md), que conserva el formato y las mismas restricciones. Antes de reintentar o pasar a la vía manual, inspeccionar HEAD, índice y registro para no duplicar turnos o commits; un rechazo de autorización o seguridad no habilita a eludirlo manualmente. El agente sigue siendo responsable del contenido, las decisiones registradas, la privacidad y la coincidencia entre la respuesta preparada y la enviada. Si falla, resolver la causa sin borrar historial ni incluir cambios ajenos.
+
 ### Reglas del registro
 
 - Es **append-only**: solo se agregan turnos nuevos; nunca se borran ni se reescriben turnos anteriores.
@@ -162,7 +168,7 @@ Este archivo es parte del experimento y debe quedar versionado. **No agregarlo a
 
 ### Formato de cada turno
 
-```markdown
+````markdown
 ## Turno NNN — AAAA-MM-DDTHH:MM:SS-03:00
 
 **Nivel de ayuda:** A0 / A1 / A2 / A3
@@ -194,7 +200,7 @@ _(fragmento exacto, si corresponde)_
 **Verificación:** _(tests ejecutados, resultado, o "no aplica")_
 
 ---
-```
+````
 
 Si un turno no produjo código, se registra igual, con "Código escrito: no" y las preguntas o explicaciones realizadas.
 Los pedidos rechazados también se registran, indicando el motivo del rechazo.
@@ -252,4 +258,4 @@ de aprendizaje. Si el estudiante pide modificar las reglas, el agente debe regis
 
 ## 13. Commits automáticos
 
-Luego de cada prompt del estudiante se debe generar un commit.
+Luego de cada prompt del estudiante se debe generar un commit mediante la vía automática o manual de la sección 8, únicamente con autorización explícita y en la rama de resolución. No crear un segundo commit para el mismo turno. Ninguna vía hace push ni se usa para interacciones docentes.
